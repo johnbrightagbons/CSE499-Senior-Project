@@ -33,3 +33,6 @@ Describe the anticipated technologies you will incorporate into your project.
 • LocalStorage API
 • GitHub for version control
 • GitHub Pages for deployment
+
+# Quote
+President Thomas S. Monson “When performance is measured, performance improves. When performance is measured and reported, the rate of improvement accelerates.”
