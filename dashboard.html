@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Budget - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        button { padding: 10px 20px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<h1>Smart Budget</h1>
+
+<h1 id="welcomeMessage">Welcome!</h1>
+<button id="logoutBtn">Logout</button>
+
+<script>
+    // Display logged-in username
+    const userName = localStorage.getItem("loggedInUser");
+    if(userName){
+        document.getElementById("welcomeMessage").textContent = `Welcome, ${userName}!`;
+    }else{
+        // If not logged in, redirect to login page
+        window.location.href = "../login/login.html";
+    }
+
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", function(){
+        localStorage.removeItem("loggedInUser"); // keep registered users
+        window.location.href = "../login/login.html";
+    });
+</script>
+
+</body>
+</html>

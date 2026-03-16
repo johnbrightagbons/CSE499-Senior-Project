@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Budget - Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        input { width: 250px; padding: 8px; margin: 5px 0; }
+        button { padding: 10px 20px; margin-top: 10px; }
+
+
+        .password-container { position: relative; display: inline-block; }
+        .toggle-eye {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+        .toggle-eye:hover {
+            transform: translateY(-50%) scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Create Account</h1>
+
+<form id="registerForm" autocomplete="off">
+    <input type="text" id="newUsername" placeholder="Username" required autocomplete="off">
+    <br><br>
+    <div class="password-container">
+        <input type="password" id="newPassword" placeholder="Password" required autocomplete="new-password">
+        <span id="toggleRegisterPassword" class="toggle-eye">Show</span>
+    </div>
+    <br><br>
+   
+    <button type="submit">Register</button>
+</form>
+
+<p id="message"></p>
+
+<p>Already have an account? <a href="../login/login.html">Login Here</a></p>
+
+<script src="register.js"></script>
+
+
+<script>
+    // Show/hide password with animation
+    const toggleRegisterPassword = document.getElementById("toggleRegisterPassword");
+    const registerPasswordInput = document.getElementById("newPassword");
+
+    toggleRegisterPassword.addEventListener("click", () => {
+        if(registerPasswordInput.type === "password"){
+            registerPasswordInput.type = "text";
+            toggleRegisterPassword.textContent = "Hide";
+        } else {
+            registerPasswordInput.type = "password";
+            toggleRegisterPassword.textContent = "Show";
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Budget - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        input { width: 250px; padding: 8px; margin: 5px 0; }
+        .social-btn{margin: 8px;} 
+        button { padding: 10px 20px; margin-top: 10px; }
+        /* Eye icon container */
+        .password-container { position: relative; display: inline-block; }
+        .toggle-eye {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+        .toggle-eye:hover {
+            transform: translateY(-50%) scale(1.2); 
+        }
+     
+    </style>
+</head>
+<body>
+
+<h1>Smart Budget</h1>
+<h2>Login</h2>
+
+<form id="loginForm" autocomplete="off">
+    <input type="text" id="username" placeholder="Username" required autocomplete="off">
+    <br><br>
+
+    <div class="password-container">
+        <input type="password" id="password" placeholder="Password" required autocomplete="new-password">
+        <span id="togglePassword" class="toggle-eye">Show</span>
+    </div>
+    <br><br>
+    <button type="submit">Login</button>
+</form>
+
+
+<hr>
+    <p>Or sign in with</p>
+    <button class="social-btn" onclick="googleLogin()">Login with Google</button>
+    <button class="social-btn" onclick="appleLogin()">Login with Apple</button>
+
+<p id="message"></p>
+
+<p>Don't have an account? 
+    <a href="register.html">Register Here</a>
+</p>
+
+<script src="login.js"></script>
+<script>
+  //toggle password visibility
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("password");
+
+    togglePassword.addEventListener("click", () => {
+        if(passwordInput.type === "password"){
+            passwordInput.type = "text";
+            togglePassword.textContent = "Hide"; 
+        } else {
+            passwordInput.type = "password";
+            togglePassword.textContent = "Show";
+        }
+    });
+
+</script>
+
+</body>
+</html>
