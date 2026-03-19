@@ -1,0 +1,110 @@
+/* ============================
+   Global Styles
+============================ */
+:root {
+  /* Fonts */
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  
+  /* colors */
+  --primary-color: #f3b808;
+  --secondary-color: #19631d;
+  --tertiary-color: #FFFFFF;
+  --light-grey: #d0d0d0;
+  --grey: #37474F;
+
+  /* sizes */
+  --font-base: 18px;
+  --small-font: 0.8em;
+  --large-font: 1.2em;
+}
+
+html, body {
+  height: 100%;
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+main h1, main p {
+  text-align: center;
+}
+
+/* ============================
+   Header Styles
+============================ */
+ .navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2E7D32; 
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo a {
+ display: inline-block;
+  font-family: 'PerfectoCalligraphy', cursive;
+  font-size: 1.5em;
+  color: #FFFFFF;
+  text-decoration: none;
+  line-height: 1;
+  text-align: center;
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+}
+
+.logo h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.logo a:hover h2 {
+  display: block;
+  color: #FFC107; 
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  
+}
+
+.navLinks li a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.3s ease;
+}
+
+.navLinks li a:hover {
+  color: #FFC107;
+}
+
+
+/* ============================
+   Footer Styles
+============================ */
+footer {
+  background-color: #37474F; 
+  color: #FFFFFF;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  margin-bottom: 0;
+}
