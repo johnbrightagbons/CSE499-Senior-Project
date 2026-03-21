@@ -1,8 +1,17 @@
 # CSE499-Senior-Project
+
+
+
+
+
 # Project Name:  SmartBudget
+
 # Project Proposed by: Rachel Amarachukwu Ukpabi
+
 # •	Team Members:  Rachel Amarachukwu Ukpabi, John Bright Agbons and Andrew Riley 
+
 # Purpose
+
 Describe the problem your project will address
 Many students struggle to track their daily spending and manage their monthly budget. Budgeting apps can be complicated, require signups, or depend heavily on internet access.
 SmartBudget is a simple, responsive web application that allows users to track income and expenses, categorize transactions, and visualize spending patterns — all within a clean and easy-to-use interface.
@@ -36,3 +45,9 @@ Describe the anticipated technologies you will incorporate into your project.
 
 # Quote
 President Thomas S. Monson “When performance is measured, performance improves. When performance is measured and reported, the rate of improvement accelerates.”
+
+![SmartBudget Homepage Wireframe] (image/wireframe_homepage.png)
+
+
+
+

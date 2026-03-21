@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBudget</title>
+    <link rel="icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <main>
+        <h1>Welcome to SmartBudget. Lets help plan your spendings</h1>
+        <p>Don't spend without budgeting</p>
+
+        <section id="transactions">
+            <h2>Transactions</h2>
+            <ul id="transaction_list">
+                <!-- To be populated using JS-->
+            </ul>
+            <form id="transaction_form">
+                <input type="text" id="transaction_description" placeholder="Description" required>
+                <input type="number" id="transaction_amount" placeholder="Amount" required>
+                <button type="submit">Add Transaction</button>
+            </form>
+
+            <canvas id="pie_chart" width="400" height="400"></canvas>
+        </section>
+    </main>
+    
+
+    <div id="footer"></div>
+    <script src="scripts/headerFooter.js"></script>
+</body>
+</html>
