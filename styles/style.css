@@ -31,9 +31,15 @@ main {
   flex: 1;
 }
 
-main h1, main p {
+main h1 {
   text-align: center;
 }
+
+main p {
+  text-align: center;
+  font-size: x-large;
+}
+
 
 /* ============================
    Header Styles
