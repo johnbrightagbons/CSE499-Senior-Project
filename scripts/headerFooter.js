@@ -13,3 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
   loadComponents("header", "/components/header.html");
   loadComponents("footer", "/components/footer.html");
 });
+
+// Load toggleMode.js in all page
+const toggleModeScript = document.createElement("script");
+toggleModeScript.src = "/scripts/toggleMode.js";
+document.head.appendChild(toggleModeScript);
+
+// Load search.js in all pages
+const searchScript = document.createElement("script");
+searchScript.src = "/scripts/search.js";
+document.head.appendChild(searchScript);
