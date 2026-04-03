@@ -5,7 +5,7 @@
   /* Fonts */
   --font-body: Arial, Helvetica, sans-serif;
   --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  
+
   /* colors */
   --primary-color: #f3b808;
   --secondary-color: #19631d;
@@ -19,7 +19,8 @@
   --large-font: 1.2em;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0%;
   padding: 0%;
@@ -44,18 +45,18 @@ main p {
 /* ============================
    Header Styles
 ============================ */
- .navBar {
+.navBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2E7D32; 
+  background-color: #2E7D32;
   padding: 1rem 2rem;
   font-family: 'Roboto', sans-serif;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo a {
- display: inline-block;
+  display: inline-block;
   font-family: 'PerfectoCalligraphy', cursive;
   font-size: 1.5em;
   color: #FFFFFF;
@@ -65,25 +66,25 @@ main p {
 }
 
 .logo img {
-    width: 80px;
-    height: auto;
+  width: 80px;
+  height: auto;
 }
 
 .logo h2 {
-    margin: 0;
-    font-size: 1rem;
+  margin: 0;
+  font-size: 1rem;
 }
 
 .logo a:hover h2 {
   display: block;
-  color: #FFC107; 
+  color: #FFC107;
 }
 
 .navLinks {
   list-style: none;
   display: flex;
   gap: 1.5rem;
-  
+
 }
 
 .navLinks li a {
@@ -102,7 +103,7 @@ main p {
    Footer Styles
 ============================ */
 footer {
-  background-color: #37474F; 
+  background-color: #37474F;
   color: #FFFFFF;
   text-align: center;
   padding: 1rem 2rem;
@@ -113,4 +114,149 @@ footer {
 
 footer p {
   margin-bottom: 0;
+}
+
+
+/* ============================
+   Budget Page Layout
+============================ */
+section {
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--tertiary-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  font-family: var(--font-body);
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* ============================
+   Transaction Form
+============================ */
+#transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+}
+
+#transaction-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: var(--grey);
+}
+
+#transaction-form input {
+  padding: 0.5rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#transaction-form button {
+  width: 200px;
+  padding: 0.7rem;
+  margin: 0 auto;
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#transaction-form button:hover {
+  background-color: #145017;
+}
+
+/* ============================
+   Transactions Table
+============================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-family: var(--font-body);
+}
+
+thead {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+}
+
+thead th {
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+tbody td,
+tfoot td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+tfoot td {
+  font-weight: bold;
+  background-color: #fafafa;
+}
+
+/* Delete button hover effect */
+.delete-btn {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Update icon hover */
+td img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+/* ============================
+   Pie Chart Styling
+============================ */
+#budgetChart {
+  display: block;
+  margin: 2rem auto;
+  border: 2px solid var(--light-grey);
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================
+   Responsive Layout
+============================ */
+@media (max-width: 700px) {
+  section {
+    padding: 1rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  #transaction-form button {
+    width: 100%;
+  }
 }
