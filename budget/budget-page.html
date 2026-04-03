@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Budget Page</title>
     <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <div id="header"></div>
-    <!-- Header -->
-    <header>
-        <h1>Budget Page</h1>
-    </header>
 
     <!-- Transaction Form -->
     <section>
@@ -113,6 +110,13 @@
                     </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"><strong>Total</strong></td>
+                    <td id="total-amount">$0.00</td>
+                    <td colspan="3"></td>
+                </tr>
+            </tfoot>
         </table>
 
         <!-- Placeholder Canvas for future Piechart to show budget utilization -->
