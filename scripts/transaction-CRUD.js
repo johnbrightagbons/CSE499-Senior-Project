@@ -1,6 +1,64 @@
 const form = document.getElementById("transaction-form");
 const tableBody = document.getElementById("transaction-table-body");
 
+
+function updateTotal() {
+    let total = 0;
+
+    // Loop through all rows in the table body
+    document.querySelectorAll("#transaction-table-body tr").forEach(row => {
+        const amountCell = row.children[2]; // 3rd column
+        const amountValue = parseFloat(amountCell.textContent.replace("$", ""));
+        total += amountValue;
+    });
+
+    // Update the total in the footer
+    document.getElementById("total-amount").textContent = `$${total.toFixed(2)}`;
+}
+
+let budgetChart = null;
+
+function updatePieChart() {
+    const rows = document.querySelectorAll("#transaction-table-body tr");
+    const categoryTotals = {};
+
+    rows.forEach(row => {
+        const amount = parseFloat(row.children[2].textContent.replace("$", ""));
+        const category = row.children[3].textContent;
+
+        categoryTotals[category] = (categoryTotals[category] || 0) + amount;
+    });
+
+    const labels = Object.keys(categoryTotals);
+    const data = Object.values(categoryTotals);
+
+    // Generate consistent random colors
+    const colors = labels.map(() =>
+        `hsl(${Math.random() * 360}, 70%, 60%)`
+    );
+
+    const ctx = document.getElementById("budgetChart").getContext("2d");
+
+    if (budgetChart) {
+        budgetChart.destroy();
+    }
+
+    budgetChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels,
+            datasets: [{
+                data,
+                backgroundColor: colors
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+}
+
+
 //Create Transaction
 form.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent page refresh
@@ -30,6 +88,10 @@ form.addEventListener("submit", (event) => {
     // Add the row to the table
     tableBody.appendChild(row);
 
+    // Update total
+    updateTotal();
+    updatePieChart();
+
     // Clear the form
     form.reset();
 });
@@ -39,5 +101,13 @@ tableBody.addEventListener("click", (event) => {
     if (event.target.classList.contains("delete-btn")) {
         const row = event.target.closest("tr");
         row.remove();
+        updateTotal();
+        updatePieChart();// Recalculate after deletion
     }
+});
+
+//update total on page load.
+document.addEventListener("DOMContentLoaded", () => {
+    updateTotal();
+    updatePieChart();
 });
