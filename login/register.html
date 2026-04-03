@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Smart Budget - Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: Arial; text-align: center; margin-top: 50px; }
-        input { width: 250px; padding: 8px; margin: 5px 0; }
-        button { padding: 10px 20px; margin-top: 10px; }
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            width: 250px;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
 
 
-        .password-container { position: relative; display: inline-block; }
+        .password-container {
+            position: relative;
+            display: inline-block;
+        }
+
         .toggle-eye {
             position: absolute;
             right: 10px;
@@ -20,55 +38,59 @@
             font-size: 10px;
             transition: transform 0.3s ease;
         }
+
         .toggle-eye:hover {
             transform: translateY(-50%) scale(1.2);
         }
     </style>
-     <link rel="icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
     <link rel="stylesheet" href="/styles/style.css">
 </head>
+
 <body>
-     <div id="header"></div>
-</head>
-<body>
+    <div id="header"></div>
+    </head>
 
-<h1>Create Account</h1>
+    <body>
 
-<form id="registerForm" autocomplete="off">
-    <input type="text" id="newUsername" placeholder="Username" required autocomplete="off">
-    <br><br>
-    <div class="password-container">
-        <input type="password" id="newPassword" placeholder="Password" required autocomplete="new-password">
-        <span id="toggleRegisterPassword" class="toggle-eye">Show</span>
-    </div>
-    <br><br>
-   
-    <button type="submit">Register</button>
-</form>
+        <h1>Create Account</h1>
 
-<p id="message"></p>
+        <form id="registerForm" autocomplete="off">
+            <input type="text" id="newUsername" placeholder="Username" required autocomplete="off">
+            <br><br>
+            <div class="password-container">
+                <input type="password" id="newPassword" placeholder="Password" required autocomplete="new-password">
+                <span id="toggleRegisterPassword" class="toggle-eye">Show</span>
+            </div>
+            <br><br>
 
-<p>Already have an account? <a href="../login/login.html">Login Here</a></p>
+            <button type="submit">Register</button>
+        </form>
 
-<script src="register.js"></script>
+        <p id="message"></p>
+
+        <p>Already have an account? <a href="../login/login.html">Login Here</a></p>
+
+        <script src="../scripts/register.js"></script>
 
 
-<script>
-    // Show/hide password with animation
-    const toggleRegisterPassword = document.getElementById("toggleRegisterPassword");
-    const registerPasswordInput = document.getElementById("newPassword");
+        <script>
+            // Show/hide password with animation
+            const toggleRegisterPassword = document.getElementById("toggleRegisterPassword");
+            const registerPasswordInput = document.getElementById("newPassword");
 
-    toggleRegisterPassword.addEventListener("click", () => {
-        if(registerPasswordInput.type === "password"){
-            registerPasswordInput.type = "text";
-            toggleRegisterPassword.textContent = "Hide";
-        } else {
-            registerPasswordInput.type = "password";
-            toggleRegisterPassword.textContent = "Show";
-        }
-    });
-</script>
-<script src="/scripts/headerFooter.js"></script>
-<div id="footer"></div>
-</body>
+            toggleRegisterPassword.addEventListener("click", () => {
+                if (registerPasswordInput.type === "password") {
+                    registerPasswordInput.type = "text";
+                    toggleRegisterPassword.textContent = "Hide";
+                } else {
+                    registerPasswordInput.type = "password";
+                    toggleRegisterPassword.textContent = "Show";
+                }
+            });
+        </script>
+        <script src="../scripts/headerFooter.js"></script>
+        <div id="footer"></div>
+    </body>
+
 </html>
