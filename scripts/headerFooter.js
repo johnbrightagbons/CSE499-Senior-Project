@@ -10,8 +10,8 @@ function loadComponents(elementid, filepath) {
 }
 document.addEventListener("DOMContentLoaded", function () {
   // Load header and footer when the DOM is fully loaded
-  loadComponents("header", "components/header.html");
-  loadComponents("footer", "components/footer.html");
+  loadComponents("header", "../components/header.html");
+  loadComponents("footer", "../components/footer.html");
 });
 
 // Load toggleMode.js in all page

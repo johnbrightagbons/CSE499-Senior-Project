@@ -4,58 +4,22 @@
 <head>
     <title>Smart Budget - Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        input {
-            width: 250px;
-            padding: 8px;
-            margin: 5px 0;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin-top: 10px;
-        }
-
-
-        .password-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .toggle-eye {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            user-select: none;
-            font-size: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .toggle-eye:hover {
-            transform: translateY(-50%) scale(1.2);
-        }
-    </style>
     <link rel="icon" href="/images/favicon.png">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
-<body>
+
     <div id="header"></div>
     </head>
 
-    <body>
+    <body class="auth-page">
 
-        <h1>Create Account</h1>
+    <main class="page-content">
 
-        <form id="registerForm" autocomplete="off">
+        <h1>Smart Budget</h1>
+        <h2>Create Account</h2>
+
+        <form id="registerForm" class="auth-form" autocomplete="off">
             <input type="text" id="newUsername" placeholder="Username" required autocomplete="off">
             <br><br>
             <div class="password-container">
@@ -71,6 +35,8 @@
         <p id="message"></p>
 
         <p>Already have an account? <a href="../login/login.html">Login Here</a></p>
+
+    </main>
 
         <script src="../scripts/register.js"></script>
 

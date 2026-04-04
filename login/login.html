@@ -4,61 +4,16 @@
 <head>
     <title>Smart Budget - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        input {
-            width: 250px;
-            padding: 8px;
-            margin: 5px 0;
-        }
-
-        .social-btn {
-            margin: 8px;
-        }
-
-        .social-btn {
-            margin: 8px;
-            width: auto;
-            max-width: 200px;
-            display: inline-block;
-        }
-
-        /* Eye icon container */
-        .password-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .toggle-eye {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            user-select: none;
-            font-size: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .toggle-eye:hover {
-            transform: translateY(-50%) scale(1.2);
-        }
-    </style>
     <link rel="icon" href="/images/favicon.png">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
-<body>
+<body class="auth-page">
     <div id="header"></div>
     <h1>Smart Budget</h1>
     <h2>Login</h2>
 
-    <form id="loginForm" autocomplete="off">
+    <form id="loginForm" class="auth-form" autocomplete="off">
         <input type="text" id="username" placeholder="Username" required autocomplete="off">
         <br><br>
 
@@ -74,8 +29,15 @@
     <hr>
     <p>Or sign in with</p>
     <div style="text-align: center;">
-        <button class="social-btn" onclick="googleLogin()">Login with Google</button>
-        <button class="social-btn" onclick="appleLogin()">Login with Apple</button>
+        <button class="social-btn google" onclick="googleLogin()">
+            Login with Google
+        </button>
+        <button class="social-btn apple" onclick="appleLogin()">
+            Login with Apple
+        </button>
+
+
+       
     </div>
 
     <p id="message"></p>
@@ -89,6 +51,7 @@
   //toggle password visibility
     const togglePassword = document.getElementById("togglePassword");
     const passwordInput = document.getElementById("password");
+
   
         togglePassword.addEventListener("click", () => {
             if (passwordInput.type === "password") {
