@@ -5,20 +5,21 @@ function startSearch() {
     .value.toLowerCase(); // Get the search input and convert to lowercase for case-insensitive search
   const searchButton = document.getElementById("searchButton"); // Get the search button element
 
-  if (searchInput.trimed || !searchButton) {
+  if (!searchInput.trim() || !searchButton) {
     setTimeout(startSearch, 200); // If the search input is empty or the search button is not found, wait for 200 milliseconds and try again{
     alert("Please enter a valid word."); // Alert the user to enter a search term
     return;
   }
 
   // Add event listener to the search button to trigger the search when clicked
-  searchInput.addeventListener("input", doSearch);
+  searchInput.addEventListener("input", doSearch);
   searchButton.addEventListener("click", doSearch);
 }
 
 // Function to perform the search and display results
+const searchInput = document.getElementById("searchInput").value.toLowerCase();
 function doSearch() {
-  const tableBody = document.getElementById("transactionTableBody"); // Get the table body element where search results will be displayed
+  const tableBody = document.getElementById("transaction-table-body"); // Get the table body element where search results will be displayed
 
   if (!tableBody) {
     return; // If the table body is not found, exit the function
@@ -33,8 +34,8 @@ function doSearch() {
     const cells = row.getElementsByTagName("td");
 
     if (cells.length > 3) {
-      const description = cells[3].textContent.toLowerCase(); // Get the description cell and convert to lowercase
-      const category = cells[2].textContent.toLowerCase(); // Get the category cell and convert to lowercase
+      const description = cells[1].textContent.toLowerCase();
+      const category = cells[3].textContent.toLowerCase();
 
       if (description.includes(searchInput) || category.includes(searchInput)) {
         row.style.display = ""; // If the description or category includes the search input, show the row
@@ -45,14 +46,16 @@ function doSearch() {
   }
 }
 
-// Start the search functionality when the DOM content is fully loaded
-document.addEventListener("DOMContentLoaded", startSearch);
-
 // Also start the search functionality when the search button is clicked
+const searchButton = document.getElementById("searchButton");
+if (searchButton) {
+  searchButton.addEventListener("click", startSearch);
+}
 document.getElementById("searchButton").addEventListener("click", startSearch);
 
-// Also start when the header might load dynamically
 document.addEventListener("DOMContentLoaded", function () {
+  startSearch();
+
   const searchButton = document.getElementById("searchButton");
   if (searchButton) {
     searchButton.addEventListener("click", startSearch);

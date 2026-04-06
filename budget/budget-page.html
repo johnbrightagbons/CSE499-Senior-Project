@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
  
-<body>
+<body class="budget-page">
     <div id="header"></div>
 
     <!-- Transaction Form -->
@@ -45,6 +45,12 @@
             <button type="submit">Add Transaction</button>
         </form>
     </section>
+
+    <!-- Transaction Counter-->
+     <section>
+        <h2>Total Transactions Added</h2>
+        <p>Transaction Count: <span id="transaction-counter">0</span></p>
+     </section>
 
     <!-- Transactions Table -->
     <section>

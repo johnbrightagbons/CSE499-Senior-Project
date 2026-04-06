@@ -10,16 +10,19 @@ function loadComponents(elementid, filepath) {
 }
 document.addEventListener("DOMContentLoaded", function () {
   // Load header and footer when the DOM is fully loaded
-  loadComponents("header", "components/header.html");
-  loadComponents("footer", "components/footer.html");
+  loadComponents("header", "../components/header.html");
+  loadComponents("footer", "../components/footer.html");
 });
 
 // Load toggleMode.js in all page
 const toggleModeScript = document.createElement("script");
-toggleModeScript.src = "scripts/toggleMode.js";
+toggleModeScript.src = "/scripts/toggleMode.js";
 document.head.appendChild(toggleModeScript);
 
-// Load search.js in all pages
-const searchScript = document.createElement("script");
-searchScript.src = "scripts/search.js";
-document.head.appendChild(searchScript);
+// Load search.js in search page
+const currentPage = window.location.pathname;
+if (currentPage.includes("budget")) {
+  const searchScript = document.createElement("script");
+  searchScript.src = "/scripts/search.js";
+  document.head.appendChild(searchScript);
+}

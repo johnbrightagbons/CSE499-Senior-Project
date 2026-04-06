@@ -98,6 +98,20 @@ main p {
   color: #FFC107;
 }
 
+/* ============================
+   Transaction Counter
+============================ */
+#transaction-counter {
+    font-weight: bold;
+    color: #145017;
+    font-size: 2rem;
+}
+
+p:has(#transaction-counter) {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 10px;
+}
 
 /* ============================
    Footer Styles
@@ -142,7 +156,15 @@ footer p {
   background-color: #f0f0f0;
   border-radius: 50%;
 }
+/* Hide search bar by default */
+.searchBar {
+    display: none;
+}
 
+/* Show search bar ONLY on budget page */
+body.budget-page .searchBar {
+    display: block;
+}
 
 /* ============================
    Toggle Mode Styles
