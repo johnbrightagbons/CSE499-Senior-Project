@@ -1,3 +1,8 @@
+const base =
+  window.location.hostname.includes("github.io")
+    ? "/CSE499-Senior-Project"
+    : "";
+
 // Function to load header and footer
 function loadComponents(elementid, filepath) {
   // Load header and footer from external HTML files
@@ -10,8 +15,8 @@ function loadComponents(elementid, filepath) {
 }
 document.addEventListener("DOMContentLoaded", function () {
   // Load header and footer when the DOM is fully loaded
-  loadComponents("header", "../components/header.html");
-  loadComponents("footer", "../components/footer.html");
+  loadComponents("header", `${base}/components/header.html`);
+  loadComponents("footer", `${base}/components/footer.html`);
 });
 
 // Load toggleMode.js in all page
