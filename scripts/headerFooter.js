@@ -9,6 +9,7 @@ function loadComponents(elementid, filepath) {
   fetch(filepath)
     .then((response) => response.text())
     .then((data) => {
+      data = data.replace(/\$\{base\}/g, base);
       document.getElementById(elementid).innerHTML = data; // Insert the loaded HTML into the specified element
     })
     .catch((error) => console.error("Error loading header and footer:", error)); // Log any errors that occur during the loading process
