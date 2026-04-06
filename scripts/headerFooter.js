@@ -21,13 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Load toggleMode.js in all page
 const toggleModeScript = document.createElement("script");
-toggleModeScript.src = "../scripts/toggleMode.js";
+toggleModeScript.src = `${base}/scripts/toggleMode.js`;
 document.head.appendChild(toggleModeScript);
 
 // Load search.js in search page
 const currentPage = window.location.pathname;
 if (currentPage.includes("budget")) {
   const searchScript = document.createElement("script");
-  searchScript.src = "../scripts/search.js";
+  searchScript.src = `${base}/scripts/search.js`;
   document.head.appendChild(searchScript);
 }
