@@ -4,9 +4,9 @@
 <head>
     <title>Smart Budget - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/images/favicon.png">
-    <link rel="stylesheet" href="/styles/style.css">
-    <script src="/scripts/headerFooter.js"></script>
+    <link rel="icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/headerFooter.js"></script>
 </head>
 
 <body>
@@ -22,13 +22,13 @@
             document.getElementById("welcomeMessage").textContent = `Welcome, ${userName}!`;
         } else {
             // If not logged in, redirect to login page
-            window.location.href = "/login/login.html";
+            window.location.href = "login/login.html";
         }
 
         // Logout
         document.getElementById("logoutBtn").addEventListener("click", function () {
             localStorage.removeItem("loggedInUser"); // keep registered users
-            window.location.href = "/login/login.html";
+            window.location.href = "login/login.html";
         });
     </script>
     <div id="footer"></div>
