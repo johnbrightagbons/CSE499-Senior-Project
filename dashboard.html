@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Smart Budget - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.png">
-    <link rel="stylesheet" href="../styles/style.css">
-   
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/scripts/headerFooter.js"></script>
 </head>
+
 <body>
+    <div id="header"></div>
 
-<h1>Smart Budget</h1>
+    <h1 id="welcomeMessage">Welcome!</h1>
+    <button id="logoutBtn">Logout</button>
 
-<h1 id="welcomeMessage">Welcome!</h1>
-<button id="logoutBtn">Logout</button>
+    <script>
+        // Display logged-in username
+        const userName = localStorage.getItem("loggedInUser");
+        if (userName) {
+            document.getElementById("welcomeMessage").textContent = `Welcome, ${userName}!`;
+        } else {
+            // If not logged in, redirect to login page
+            window.location.href = "/login/login.html";
+        }
 
-<script>
-    // Display logged-in username
-    const userName = localStorage.getItem("loggedInUser");
-    if(userName){
-        document.getElementById("welcomeMessage").textContent = `Welcome, ${userName}!`;
-    }else{
-        // If not logged in, redirect to login page
-        window.location.href = "../login/login.html";
-    }
-
-    // Logout
-    document.getElementById("logoutBtn").addEventListener("click", function(){
-        localStorage.removeItem("loggedInUser"); // keep registered users
-        window.location.href = "../login/login.html";
-    });
-</script>
-
+        // Logout
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            localStorage.removeItem("loggedInUser"); // keep registered users
+            window.location.href = "/login/login.html";
+        });
+    </script>
+    <div id="footer"></div>
 </body>
+
 </html>

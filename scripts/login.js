@@ -1,8 +1,3 @@
-const base =
-    window.location.hostname.includes("github.io")
-        ? "/CSE499-Senior-Project"
-        : "";
-
 window.onload = function () {
     document.getElementById("username").value = "";
     document.getElementById("password").value = "";

@@ -1,8 +1,3 @@
-// Dynamic base path for GitHub Pages or local use
-const base = window.location.hostname.includes("github.io")
-    ? "/CSE499-Senior-Project"
-    : "";
-
 document.getElementById("registerForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
