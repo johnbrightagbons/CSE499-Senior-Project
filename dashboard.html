@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Smart Budget - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body { font-family: Arial; text-align: center; margin-top: 50px; }
-        button { padding: 10px 20px; margin-top: 20px; }
-    </style>
+    <link rel="icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/headerFooter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/pieChart.js"></script>
 </head>
+
 <body>
+    <div id="header"></div>
 
-<h1>Smart Budget</h1>
+    <h1 id="welcomeMessage">Welcome!</h1>
+    <button id="logoutBtn">Logout</button>
 
-<h1 id="welcomeMessage">Welcome!</h1>
-<button id="logoutBtn">Logout</button>
+    <!-- Placeholder Canvas for future Piechart to show budget utilization -->
+    <canvas id="budgetChart" width="400" height="400"></canvas>
 
-<script>
-    // Display logged-in username
-    const userName = localStorage.getItem("loggedInUser");
-    if(userName){
-        document.getElementById("welcomeMessage").textContent = `Welcome, ${userName}!`;
-    }else{
-        // If not logged in, redirect to login page
-        window.location.href = "../login/login.html";
-    }
+    <script>
+        // Display logged-in username
+        const userName = localStorage.getItem("loggedInUser");
+        if (userName) {
+            document.getElementById("welcomeMessage").textContent = `Welcome, ${userName}!`;
+        } else {
+            // If not logged in, redirect to login page
+            window.location.href = "login/login.html";
+        }
 
-    // Logout
-    document.getElementById("logoutBtn").addEventListener("click", function(){
-        localStorage.removeItem("loggedInUser"); // keep registered users
-        window.location.href = "../login/login.html";
-    });
-</script>
-
+        // Logout
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            localStorage.removeItem("loggedInUser"); // keep registered users
+            window.location.href = "login/login.html";
+        });
+    </script>
+    <div id="footer"></div>
 </body>
+
 </html>

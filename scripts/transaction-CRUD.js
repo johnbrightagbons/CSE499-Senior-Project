@@ -15,47 +15,6 @@ function updateTotal() {
   document.getElementById("total-amount").textContent = `$${total.toFixed(2)}`;
 }
 
-let budgetChart = null;
-
-function updatePieChart() {
-  const rows = document.querySelectorAll("#transaction-table-body tr");
-  const categoryTotals = {};
-
-  rows.forEach((row) => {
-    const amount = parseFloat(row.children[2].textContent.replace("$", ""));
-    const category = row.children[3].textContent;
-
-    categoryTotals[category] = (categoryTotals[category] || 0) + amount;
-  });
-
-  const labels = Object.keys(categoryTotals);
-  const data = Object.values(categoryTotals);
-
-  // Generate consistent random colors
-  const colors = labels.map(() => `hsl(${Math.random() * 360}, 70%, 60%)`);
-
-  const ctx = document.getElementById("budgetChart").getContext("2d");
-
-  if (budgetChart) {
-    budgetChart.destroy();
-  }
-
-  budgetChart = new Chart(ctx, {
-    type: "pie",
-    data: {
-      labels,
-      datasets: [
-        {
-          data,
-          backgroundColor: colors,
-        },
-      ],
-    },
-    options: {
-      responsive: false,
-    },
-  });
-}
 
 // Count Transations
 function updateTransactionCounter() {
@@ -63,6 +22,52 @@ function updateTransactionCounter() {
     "#transaction-table-body tr",
   ).length;
   document.getElementById("transaction-counter").textContent = rowCount;
+}
+
+//Saving Transactions to Local storage
+function saveTransactions() {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  if (!loggedInUser) return;
+
+  const rows = document.querySelectorAll("#transaction-table-body tr");
+  const transactions = [];
+
+  rows.forEach(row => {
+    const cells = row.querySelectorAll("td");
+    transactions.push({
+      date: cells[0].textContent,
+      description: cells[1].textContent,
+      amount: cells[2].textContent.replace("$", ""),
+      category: cells[3].textContent
+    });
+  });
+
+  localStorage.setItem(`transactions_${loggedInUser}`, JSON.stringify(transactions));
+}
+
+//Load trasaction table
+function loadTransactions() {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  if (!loggedInUser) return;
+
+  const saved = JSON.parse(localStorage.getItem(`transactions_${loggedInUser}`)) || [];
+
+  saved.forEach(t => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${t.date}</td>
+      <td>${t.description}</td>
+      <td>$${Number(t.amount).toFixed(2)}</td>
+      <td>${t.category}</td>
+      <td><img src="update-icon.png" alt="Update" width="20"></td>
+      <td>
+          <svg class="delete-btn" width="20" height="20" viewBox="0 0 24 24">
+              <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z"/>
+          </svg>
+      </td>
+    `;
+    tableBody.appendChild(row);
+  });
 }
 
 //Create Transaction
@@ -94,9 +99,11 @@ form.addEventListener("submit", (event) => {
   // Add the row to the table
   tableBody.appendChild(row);
 
+  //Save to Local Storage
+  saveTransactions();
+
   // Update total
   updateTotal();
-  updatePieChart();
   updateTransactionCounter();
 
   // Clear the form
@@ -109,13 +116,17 @@ tableBody.addEventListener("click", (event) => {
     const row = event.target.closest("tr");
     row.remove();
     updateTotal();
-    updatePieChart(); // Recalculate after deletion
+    // Recalculate after deletion
+    saveTransactions();
   }
 });
 
 //update total on page load.
 document.addEventListener("DOMContentLoaded", () => {
+  loadTransactions();
   updateTotal();
-  updatePieChart();
   updateTransactionCounter();
 });
+
+
+

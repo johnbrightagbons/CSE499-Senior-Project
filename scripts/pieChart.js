@@ -1,0 +1,56 @@
+let budgetChart = null;
+
+function updatePieChart() {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (!loggedInUser) return;
+
+    // Load saved transactions
+    const saved = JSON.parse(localStorage.getItem(`transactions_${loggedInUser}`)) || [];
+
+    const categoryTotals = {};
+
+    // Build totals from localStorage instead of DOM
+    saved.forEach(t => {
+        const amount = parseFloat(t.amount);
+        const category = t.category;
+
+        categoryTotals[category] = (categoryTotals[category] || 0) + amount;
+    });
+
+    const labels = Object.keys(categoryTotals);
+    const data = Object.values(categoryTotals);
+
+    // Generate consistent random colors
+    const colors = labels.map(() => `hsl(${Math.random() * 360}, 70%, 60%)`);
+
+    const canvas = document.getElementById("budgetChart");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    if (budgetChart) {
+        budgetChart.destroy();
+    }
+
+    budgetChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels,
+            datasets: [
+                {
+                    data,
+                    backgroundColor: colors,
+                },
+            ],
+        },
+        options: {
+            responsive: false,
+        },
+    });
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    updatePieChart();
+});

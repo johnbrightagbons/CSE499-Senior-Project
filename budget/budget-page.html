@@ -7,11 +7,16 @@
     <title>Budget Page</title>
     <link rel="icon" href="/images/favicon.png">
     <link rel="stylesheet" href="../styles/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
- 
+
 <body class="budget-page">
     <div id="header"></div>
+
+    <!-- Transaction Counter-->
+    <section>
+        <h2>Total Transactions Added</h2>
+        <p>Transaction Count: <span id="transaction-counter">0</span></p>
+    </section>
 
     <!-- Transaction Form -->
     <section>
@@ -46,12 +51,6 @@
         </form>
     </section>
 
-    <!-- Transaction Counter-->
-     <section>
-        <h2>Total Transactions Added</h2>
-        <p>Transaction Count: <span id="transaction-counter">0</span></p>
-     </section>
-
     <!-- Transactions Table -->
     <section>
         <h2>Transactions</h2>
@@ -68,55 +67,60 @@
                 </tr>
             </thead>
 
+
             <tbody id="transaction-table-body">
-                <!-- PlaceHolder Data Row 1 -->
-                <tr>
-                    <td>2026-03-01</td>
-                    <td>Groceries</td>
-                    <td>$85.20</td>
-                    <td>Food</td>
-                    <td>
-                        <img src="update-icon.png" alt="Update" width="20" />
-                    </td>
-                    <td>
-                        <svg class="delete-btn" width="20" height="20" viewBox="0 0 24 24">
-                            <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z" />
-                        </svg>
-                    </td>
-                </tr>
+                <!--
+    PlaceHolder Data Row 1
+    <tr>
+        <td>2026-03-01</td>
+        <td>Groceries</td>
+        <td>$85.20</td>
+        <td>Food</td>
+        <td>
+            <img src="update-icon.png" alt="Update" width="20" />
+        </td>
+        <td>
+            <svg class="delete-btn" width="20" height="20" viewBox="0 0 24 24">
+                <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z" />
+            </svg>
+        </td>
+    </tr>
 
-                <!-- PlaceHolder Data Row 2 -->
-                <tr>
-                    <td>2026-03-02</td>
-                    <td>Gas</td>
-                    <td>$42.10</td>
-                    <td>Transportation</td>
-                    <td>
-                        <img src="update-icon.png" alt="Update" width="20" />
-                    </td>
-                    <td>
-                        <svg class="delete-btn" width="20" height="20" viewBox="0 0 24 24">
-                            <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z" />
-                        </svg>
-                    </td>
-                </tr>
+    PlaceHolder Data Row 2
+    <tr>
+        <td>2026-03-02</td>
+        <td>Gas</td>
+        <td>$42.10</td>
+        <td>Transportation</td>
+        <td>
+            <img src="update-icon.png" alt="Update" width="20" />
+        </td>
+        <td>
+            <svg class="delete-btn" width="20" height="20" viewBox="0 0 24 24">
+                <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z" />
+            </svg>
+        </td>
+    </tr>
 
-                <!-- PlaceHolder Data Row 3 -->
-                <tr>
-                    <td>2026-03-03</td>
-                    <td>Mortgage</td>
-                    <td>$5.75</td>
-                    <td>Bills</td>
-                    <td>
-                        <img src="update-icon.png" alt="Update" width="20" />
-                    </td>
-                    <td>
-                        <svg class="delete-btn" width="20" height="20" viewBox="0 0 24 24">
-                            <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z" />
-                        </svg>
-                    </td>
-                </tr>
+    PlaceHolder Data Row 3
+    <tr>
+        <td>2026-03-03</td>
+        <td>Mortgage</td>
+        <td>$5.75</td>
+        <td>Bills</td>
+        <td>
+            <img src="update-icon.png" alt="Update" width="20" />
+        </td>
+        <td>
+            <svg class="delete-btn" width="20" height="20" viewBox="0 0 24 24">
+                <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z" />
+            </svg>
+        </td>
+    </tr>
+-->
+
             </tbody>
+
             <tfoot>
                 <tr>
                     <td colspan="2"><strong>Total</strong></td>
@@ -125,9 +129,6 @@
                 </tr>
             </tfoot>
         </table>
-
-        <!-- Placeholder Canvas for future Piechart to show budget utilization -->
-        <canvas id="budgetChart" width="400" height="400"></canvas>
 
     </section>
     <div id="footer"></div>
