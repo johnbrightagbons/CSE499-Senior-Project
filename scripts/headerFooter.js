@@ -1,4 +1,4 @@
-const base = "..";
+const base = "/CSE499-Senior-Project";
 // Function to load the hamburger menu
 function loadHamburgerMenu() {
   const hamburger = document.getElementById("hamburgerMenu"); // Get the humburger element ID
