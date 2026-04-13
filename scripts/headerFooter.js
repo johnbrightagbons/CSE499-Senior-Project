@@ -37,7 +37,9 @@ function loadComponents(elementid, filepath) {
   fetch(filepath)
     .then((response) => response.text())
     .then((data) => {
-      document.getElementById(elementid).innerHTML = data;
+  const processedData = data.replaceAll("${base}", base);
+
+  document.getElementById(elementid).innerHTML = processedData;
 
       // If this is the header, initialize the hamburger menu
       if (elementid === "header") {
