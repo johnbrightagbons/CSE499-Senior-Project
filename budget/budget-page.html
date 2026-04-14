@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 
+<script>
+    const user = localStorage.getItem("loggedInUser");
+
+    if (!user) {
+        // 🚫 NOT LOGGED IN → REDIRECT
+        alert("You must login first!");
+        window.location.href = "../login/login.html";
+    }
+</script>
+
 <body class="budget-page">
     <div id="header"></div>
 

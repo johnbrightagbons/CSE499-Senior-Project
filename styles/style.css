@@ -141,11 +141,12 @@ main p {
   color: #FFC107;
 }
 
+
 .navLinks {
   list-style: none;
   display: flex;
+  align-items: center;  
   gap: 1.5rem;
-
 }
 
 .navLinks li a {
@@ -721,3 +722,57 @@ h1:first-of-type {
 .balance {
   color: #1565c0;
 }
+
+
+
+
+/* AVATAR */
+.avatar {
+  width: 35px;
+  height: 35px;
+  background-color: #f3b808;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+
+
+  
+  line-height: 1;
+}
+
+/* DROPDOWN */
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  background: white;
+  color: black;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  padding: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: red;
+  display: block;
+  margin-top: 10px;
+}
+
+/* SHOW DROPDOWN */
+.show {
+  display: block;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

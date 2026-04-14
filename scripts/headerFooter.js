@@ -1,4 +1,6 @@
-const base = "/CSE499-Senior-Project";
+const base = window.location.hostname.includes("github.io")
+  ? "/CSE499-Senior-Project"
+  : "";
 // Function to load the hamburger menu
 function loadHamburgerMenu() {
   const hamburger = document.getElementById("hamburgerMenu"); // Get the humburger element ID
@@ -44,6 +46,7 @@ function loadComponents(elementid, filepath) {
       // If this is the header, initialize the hamburger menu
       if (elementid === "header") {
         loadHamburgerMenu();
+        updateNav(); // Update the navigation links base on the user's login state
       }
     })
     .catch((error) => console.error("Error loading header and footer:", error)); // Log any errors that occur during the loading process
@@ -58,6 +61,48 @@ document.addEventListener("DOMContentLoaded", function () {
 const toggleModeScript = document.createElement("script");
 toggleModeScript.src = `${base}/scripts/toggleMode.js`;
 document.head.appendChild(toggleModeScript);
+
+
+function updateNav() {
+    const user = localStorage.getItem("loggedInUser");
+
+    const loginItem = document.getElementById("loginItem");
+    const registerItem = document.getElementById("registerItem");
+    const userMenu = document.getElementById("userMenu");
+    const avatar = document.getElementById("avatar");
+    const greeting = document.getElementById("userGreeting");
+
+    if (user) {
+        loginItem.style.display = "none";
+        registerItem.style.display = "none";
+        userMenu.style.display = "block";
+
+        // avatar letter
+        avatar.textContent = user.charAt(0).toUpperCase();
+
+        // greeting text
+        greeting.textContent = `Hello, ${user}`;
+
+    } else {
+        loginItem.style.display = "block";
+        registerItem.style.display = "block";
+        userMenu.style.display = "none";
+    }
+}
+
+
+document.addEventListener("click", function (e) {
+    const avatar = document.getElementById("avatar");
+    const dropdown = document.getElementById("dropdownMenu");
+
+    if (!avatar || !dropdown) return;
+
+    if (avatar.contains(e.target)) {
+        dropdown.classList.toggle("show");
+    } else {
+        dropdown.classList.remove("show");
+    }
+});
 
 /* Commented out for Delete function to work
 // Load search.js in search page

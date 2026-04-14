@@ -23,3 +23,5 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("balanceAmount").textContent = "$" + (totalIncome - totalExpenses).toFixed(2);
 
 });
+
+
