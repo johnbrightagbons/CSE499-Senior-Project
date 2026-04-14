@@ -9,16 +9,40 @@
     <script src="scripts/headerFooter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="scripts/pieChart.js"></script>
+    <script src="scripts/dashboard.js"></script>
 </head>
 
 <body>
     <div id="header"></div>
 
     <h1 id="welcomeMessage">Welcome!</h1>
-    <button id="logoutBtn">Logout</button>
 
-    <!-- Placeholder Canvas for future Piechart to show budget utilization -->
-    <canvas id="budgetChart" width="400" height="400"></canvas>
+    <div class="dashboard-container">
+        <div class="dashboard-grid">
+
+            <div class="card">
+                <h3>Total Income</h3>
+                <p id="incomeAmount" class="income">$0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Expenses</h3>
+                <p id="expenseAmount" class="expense">$0</p>
+            </div>
+
+            <!-- Placeholder Canvas for future Piechart to show budget utilization -->
+            <canvas id="budgetChart" width="400" height="400"></canvas>
+
+            <div class="card">
+                <h3>Balance</h3>
+                <p id="balanceAmount" class="balance">$0</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <button id="logoutBtn">Logout</button>
 
     <script>
         // Display logged-in username

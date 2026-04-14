@@ -1,5 +1,10 @@
 let budgetChart = null;
 
+function formatCategory(cat) {
+    cat = cat.toLowerCase();
+    return cat.charAt(0).toUpperCase() + cat.slice(1);
+}
+
 function updatePieChart() {
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (!loggedInUser) return;
@@ -12,12 +17,13 @@ function updatePieChart() {
     // Build totals from localStorage instead of DOM
     saved.forEach(t => {
         const amount = parseFloat(t.amount);
-        const category = t.category;
+        const rawCategory = t.category.trim();
+        const category = rawCategory.toLowerCase();
 
         categoryTotals[category] = (categoryTotals[category] || 0) + amount;
     });
 
-    const labels = Object.keys(categoryTotals);
+    const labels = Object.keys(categoryTotals).map(formatCategory);
     const data = Object.values(categoryTotals);
 
     // Generate consistent random colors

@@ -59,11 +59,19 @@ function loadTransactions() {
       <td>${t.description}</td>
       <td>$${Number(t.amount).toFixed(2)}</td>
       <td>${t.category}</td>
-      <td><img src="update-icon.png" alt="Update" width="20"></td>
       <td>
-          <svg class="delete-btn" width="20" height="20" viewBox="0 0 24 24">
-              <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z"/>
-          </svg>
+  <div class="icon-btn update-btn">
+    <svg width="20" height="20" viewBox="0 0 24 24">
+      <path fill="#1976d2" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+    </svg>
+  </div>
+      </td>
+      <td>
+  <div class="icon-btn delete-btn">
+    <svg width="20" height="20" viewBox="0 0 24 24">
+      <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z"/>
+    </svg>
+  </div>
       </td>
     `;
     tableBody.appendChild(row);
@@ -72,54 +80,100 @@ function loadTransactions() {
 
 //Create Transaction
 form.addEventListener("submit", (event) => {
-  event.preventDefault(); // Prevent page refresh
+  event.preventDefault();
 
-  // Get values from the form
   const date = document.getElementById("date-input").value;
   const description = document.getElementById("description-input").value;
   const amount = document.getElementById("amount-input").value;
   const category = document.getElementById("category-input").value;
 
-  // Create a new row
-  const row = document.createElement("tr");
+  const editIndex = document.getElementById("edit-index").value;
 
-  row.innerHTML = `
-    <td>${date}</td>
-    <td>${description}</td>
-    <td>$${Number(amount).toFixed(2)}</td>
-    <td>${category}</td>
-    <td><img src="update-icon.png" alt="Update" width="20"></td>
-    <td>
-        <svg class="delete-btn" width="20" height="20" viewBox="0 0 24 24">
+  // If editIndex has a value → UPDATE
+  if (editIndex !== "") {
+    const row = tableBody.children[editIndex];
+    row.children[0].textContent = date;
+    row.children[1].textContent = description;
+    row.children[2].textContent = `$${Number(amount).toFixed(2)}`;
+    row.children[3].textContent = category;
+
+    // Reset edit mode
+    document.getElementById("edit-index").value = "";
+    form.querySelector("button[type='submit']").textContent = "Add Transaction";
+
+  } else {
+    // Otherwise → CREATE NEW ROW
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${date}</td>
+      <td>${description}</td>
+      <td>$${Number(amount).toFixed(2)}</td>
+      <td>${category}</td>
+      <td>
+        <div class="icon-btn update-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path fill="#1976d2" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+          </svg>
+        </div>
+      </td>
+      <td>
+        <div class="icon-btn delete-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24">
             <path fill="red" d="M3 6h18v2H3zm2 3h14l-1.5 12h-11zM9 4h6v2H9z"/>
-        </svg>
-    </td>
-  `;
+          </svg>
+        </div>
+      </td>
+    `;
 
-  // Add the row to the table
-  tableBody.appendChild(row);
+    tableBody.appendChild(row);
+  }
 
-  //Save to Local Storage
+  // Save + update UI
   saveTransactions();
-
-  // Update total
   updateTotal();
   updateTransactionCounter();
 
-  // Clear the form
   form.reset();
 });
 
+
 //Delete Transaciton
 tableBody.addEventListener("click", (event) => {
-  if (event.target.classList.contains("delete-btn")) {
-    const row = event.target.closest("tr");
-    row.remove();
-    updateTotal();
-    // Recalculate after deletion
-    saveTransactions();
-  }
+  const btn = event.target.closest(".delete-btn");
+  if (!btn) return;
+
+  const row = btn.closest("tr");
+  row.remove();
+
+  updateTotal();
+  saveTransactions();
+  updateTransactionCounter();
 });
+
+
+//Update Transaction
+tableBody.addEventListener("click", (event) => {
+  const btn = event.target.closest(".update-btn");
+  if (!btn) return;
+
+  const row = btn.closest("tr");
+  const cells = row.querySelectorAll("td");
+  const index = Array.from(tableBody.children).indexOf(row);
+
+  // Load values into form
+  document.getElementById("date-input").value = cells[0].textContent;
+  document.getElementById("description-input").value = cells[1].textContent;
+  document.getElementById("amount-input").value = cells[2].textContent.replace("$", "");
+  document.getElementById("category-input").value = cells[3].textContent;
+
+  // Store index so submit knows we're editing
+  document.getElementById("edit-index").value = index;
+
+  // Change button text to indicate editing
+  form.querySelector("button[type='submit']").textContent = "Update Transaction";
+});
+
 
 //update total on page load.
 document.addEventListener("DOMContentLoaded", () => {

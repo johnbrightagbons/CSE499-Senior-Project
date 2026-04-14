@@ -37,9 +37,9 @@ function loadComponents(elementid, filepath) {
   fetch(filepath)
     .then((response) => response.text())
     .then((data) => {
-  const processedData = data.replaceAll("${base}", base);
+      const processedData = data.replaceAll("${base}", base);
 
-  document.getElementById(elementid).innerHTML = processedData;
+      document.getElementById(elementid).innerHTML = processedData;
 
       // If this is the header, initialize the hamburger menu
       if (elementid === "header") {
@@ -59,6 +59,7 @@ const toggleModeScript = document.createElement("script");
 toggleModeScript.src = `${base}/scripts/toggleMode.js`;
 document.head.appendChild(toggleModeScript);
 
+/* Commented out for Delete function to work
 // Load search.js in search page
 const currentPage = window.location.pathname;
 if (currentPage.includes("budget")) {
@@ -66,3 +67,4 @@ if (currentPage.includes("budget")) {
   searchScript.src = `${base}/scripts/search.js`;
   document.head.appendChild(searchScript);
 }
+*/
